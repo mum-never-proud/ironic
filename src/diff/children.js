@@ -2,9 +2,9 @@ import diff from 'diff';
 import mount from 'mount';
 import zip from 'utils/zip';
 
-export default function(oldChildren, newChildren) {
-  const childPatches = [],
-    additionalPatches = [];
+export default function diffChildren(oldChildren = [], newChildren = []) {
+  const childPatches = [];
+  const additionalPatches = [];
 
   oldChildren.forEach((oldChild, i) => childPatches.push(diff(oldChild, newChildren[i])));
 

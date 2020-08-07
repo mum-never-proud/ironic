@@ -9,14 +9,21 @@ export default class Component {
     this._currentNode = null;
     this._currentElement = null;
   }
+
   setState(partialState) {
-    this._pendingState = Object.assign({}, this.state, partialState);
-    this.shouldUpdate() && this.updateComponent();
+    this._pendingState = { ...this.state, ...partialState };
+
+    if (this.shouldUpdate()) {
+      this.updateComponent();
+    }
   }
+
   // @override
+  // eslint-disable-next-line class-methods-use-this
   shouldUpdate() {
     return true;
   }
+
   updateComponent() {
     if (this.shouldUpdate()) {
       const $currentNode = this._currentNode;
@@ -35,6 +42,7 @@ export default class Component {
       patch(this._currentElement);
     }
   }
+
   // @override
-  render(){}
+  render() {}
 }

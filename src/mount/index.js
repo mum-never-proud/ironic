@@ -1,10 +1,10 @@
 import createComponent from 'create/component';
 import createElement from 'create/element';
 import createText from 'create/text';
-import exceptionMessage from 'utils/exceptions';
+import exceptionMessage from 'constants/exceptions';
 
-export default function($el, $parent) {
-  if (!$el) {
+export default function mount($el, $parent) {
+  if ($el === undefined || $el === null) {
     throw Error(`child is ${exceptionMessage.INVALID_DOM_NODE}`);
   }
 

@@ -3,34 +3,35 @@ import diffChildren from 'diff/children';
 import diffProps from 'diff/props';
 import mount from 'mount';
 
-export default function(oldVNode, newVNode) {
-  if (!newVNode) {
-    return $node => $node.remove();
-  }
-
-  if (!oldVNode) {
-    return $node => mount(createElement(newVNode), $node);
-  }
-
+export default function diff(oldVNode, newVNode) {
   if (typeof oldVNode === 'string'
     || typeof newVNode === 'string'
     || oldVNode.tag !== newVNode.tag) {
     if (oldVNode !== newVNode) {
-      return $node => {
+      return ($node) => {
         const $newNode = createElement(newVNode);
 
         $node.replaceWith($newNode);
 
         return $newNode;
-      }
+      };
     }
-    return $node => $node;
+
+    return ($node) => $node;
   }
 
-  const patchProps = diffProps(oldVNode.props, newVNode.props),
-    patchChildren = diffChildren(oldVNode.children, newVNode.children);
+  if (!newVNode) {
+    return ($node) => $node.remove();
+  }
 
-  return $node => {
+  if (!oldVNode) {
+    return ($node) => mount(createElement(newVNode), $node);
+  }
+
+  const patchProps = diffProps(oldVNode.props, newVNode.props);
+  const patchChildren = diffChildren(oldVNode.children, newVNode.children);
+
+  return ($node) => {
     patchProps($node);
     patchChildren($node);
 

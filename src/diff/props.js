@@ -1,11 +1,19 @@
 import createAttribute from 'create/attribute';
+import isEventProp from 'utils/is-event-prop';
+import registerEvent from 'utils/register-event';
 
-export default function(oldAttrs, newAttrs) {
+export default function(oldAttrs = {}, newAttrs = {}) {
   const patches = [];
 
   for (const [attr, value] of Object.entries(newAttrs)) {
     patches.push($node => {
-      $node.setAttributeNode(createAttribute(attr, value));
+      if (isEventProp(attr)) {
+        registerEvent($node, attr, value);
+      } else if (value === false) {
+        $node.removeAttribute(attr);
+      } else {
+        $node.setAttributeNode(createAttribute(attr, value));
+      }
     });
   }
 

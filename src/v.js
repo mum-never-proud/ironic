@@ -1,9 +1,9 @@
 import createObject from './utils/create-object';
 
-export default function(tag, { props = {}, children = [] } = {}) {
+export default function v(tag, props, ...children) {
   return createObject({
     tag,
-    props,
-    children
+    props: props || {},
+    children,
   });
 }
