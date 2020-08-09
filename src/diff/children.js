@@ -9,12 +9,10 @@ export default function diffChildren(oldChildren = [], newChildren = []) {
   oldChildren.forEach((oldChild, i) => childPatches.push(diff(oldChild, newChildren[i])));
 
   for (const newChild of newChildren.slice(oldChildren.length)) {
-    additionalPatches.push($node => {
-      return mount(newChild, $node);
-    });
+    additionalPatches.push(($node) => mount(newChild, $node));
   }
 
-  return $parent => {
+  return ($parent) => {
     for (const [childPatch, $childNode] of zip(childPatches, $parent.childNodes)) {
       childPatch($childNode);
     }

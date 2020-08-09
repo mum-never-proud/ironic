@@ -1,3 +1,3 @@
-export default function(text) {
-  return document.createTextNode(text);
+export default function text(string) {
+  return document.createTextNode(string);
 }

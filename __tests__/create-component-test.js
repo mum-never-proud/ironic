@@ -8,30 +8,30 @@ class App extends Component {
   }
 }
 
-describe('create component', function () {
+describe('create component', () => {
   let rootElement;
 
-  beforeEach(function() {
+  beforeEach(() => {
     document.body.innerHTML = '<div id="root"></div>';
     rootElement = document.getElementById('root');
   });
 
-  afterEach(function() {
+  afterEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('should create a component', function() {
+  it('should create a component', () => {
     const ele = createComponent(v(App), rootElement);
 
     expect(rootElement.childNodes.length).toEqual(1);
     expect(rootElement.childNodes[0]).toEqual(ele);
   });
 
-  it('should throw error when parent is not a valid DOM element', function() {
+  it('should throw error when parent is not a valid DOM element', () => {
     expect(() => createComponent(v(App), 'rootElement')).toThrowError();
   });
 
-  it('should throw error when child is not a valid DOM element', function() {
+  it('should throw error when child is not a valid DOM element', () => {
     expect(() => createComponent(v(null), rootElement)).toThrowError();
   });
 });

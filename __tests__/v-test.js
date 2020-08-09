@@ -1,7 +1,7 @@
 import v from '../src/v';
 
-describe('v', function() {
-  it('should init props and children with default values if undefined', function() {
+describe('v', () => {
+  it('should init props and children with default values if undefined', () => {
     const node = v('p');
 
     expect(node.children).toEqual([]);

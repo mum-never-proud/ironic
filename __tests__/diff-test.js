@@ -1,25 +1,25 @@
-import { toHaveTextContent } from '@testing-library/jest-dom/matchers'
+import { toHaveTextContent } from '@testing-library/jest-dom/matchers';
 import diff from '../src/diff';
 import mount from '../src/mount';
 import v from '../src/v';
 
 expect.extend({ toHaveTextContent });
 
-describe('diff', function() {
+describe('diff', () => {
   let rootElement;
 
-  beforeEach(function() {
+  beforeEach(() => {
     document.body.innerHTML = '<div id="root"></div>';
     rootElement = document.getElementById('root');
   });
 
-  afterEach(function() {
+  afterEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('should remove old node when there is no new node', function () {
-    const vNode = v('p'),
-      p = mount(vNode, root);
+  it('should remove old node when there is no new node', () => {
+    const vNode = v('p');
+    const p = mount(vNode, rootElement);
 
     expect(rootElement.childNodes.length).toEqual(1);
 
@@ -30,7 +30,7 @@ describe('diff', function() {
     expect(rootElement.childNodes.length).toEqual(0);
   });
 
-  it('should append new node if not already present', function () {
+  it('should append new node if not already present', () => {
     const vNode = v('p');
 
     expect(rootElement.childNodes.length).toEqual(0);
@@ -42,7 +42,7 @@ describe('diff', function() {
     expect(rootElement.childNodes.length).toEqual(1);
   });
 
-  it('should replace the text', function () {
+  it('should replace the text', () => {
     const textNode = mount('hello', rootElement);
 
     expect(rootElement).toHaveTextContent('hello');
@@ -54,14 +54,15 @@ describe('diff', function() {
     expect(rootElement).toHaveTextContent('hello 1');
   });
 
-  it('should replace the tag', function() {
-    const p = mount(v('p'), rootElement);
+  it('should replace the tag', () => {
+    const p = v('p');
+    const ele = mount(p, rootElement); // to be replaced with div
 
     expect(rootElement.childNodes[0]).toBeInstanceOf(HTMLParagraphElement);
 
-    const patch = diff(p, v('div'));
+    const patch = diff(v('p'), v('div'));
 
-    patch(p);
+    patch(ele);
 
     expect(rootElement.childNodes[0]).toBeInstanceOf(HTMLDivElement);
   });

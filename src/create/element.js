@@ -4,7 +4,7 @@ import isEventProp from 'utils/is-event-prop';
 import mount from 'mount';
 import registerEvent from 'utils/register-event';
 
-export default function(vNode) {
+export default function element(vNode) {
   if (typeof vNode === 'string') {
     return createText(vNode);
   }
@@ -12,9 +12,9 @@ export default function(vNode) {
   const {
     tag,
     props,
-    children
-  } = vNode,
-    $el = document.createElement(tag);
+    children,
+  } = vNode;
+  const $el = document.createElement(tag);
 
   if (props) {
     for (const [prop, value] of Object.entries(props)) {

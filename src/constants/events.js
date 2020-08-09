@@ -6,5 +6,5 @@ export default [
   'click',
   'dblclick',
   'focusin',
-  'focusout'
+  'focusout',
 ];

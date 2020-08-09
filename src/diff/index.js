@@ -1,12 +1,13 @@
 import createElement from 'create/element';
 import diffChildren from 'diff/children';
 import diffProps from 'diff/props';
+import isVElement from 'utils/is-v-element';
 import mount from 'mount';
 
 export default function diff(oldVNode, newVNode) {
   if (typeof oldVNode === 'string'
     || typeof newVNode === 'string'
-    || oldVNode.tag !== newVNode.tag) {
+    || (isVElement(oldVNode, newVNode) && oldVNode.tag !== newVNode.tag)) {
     if (oldVNode !== newVNode) {
       return ($node) => {
         const $newNode = createElement(newVNode);

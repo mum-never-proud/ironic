@@ -1,30 +1,31 @@
 import Component from '../src/Component';
 
-describe('component', function() {
-  let component, updateComponentSpy;
+describe('component', () => {
+  let component;
+  let updateComponentSpy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     const ele = document.createElement('div');
 
     component = new Component();
     updateComponentSpy = jest.spyOn(component, 'updateComponent');
     component._parentElement = ele;
-    component._currentElement =  ele;
+    component._currentElement = ele;
   });
 
-  afterEach(function() {
+  afterEach(() => {
     component = null;
     updateComponentSpy.mockRestore();
   });
 
-  it('should call update component on setting state', function() {
+  it('should call update component on setting state', () => {
     component.setState({});
 
     expect(updateComponentSpy).toHaveBeenCalled();
   });
 
-  it('should not update component when shouldUpdate() returns false', function() {
-    component.shouldUpdate = function() { return false; }
+  it('should not update component when shouldUpdate() returns false', () => {
+    component.shouldUpdate = () => false;
 
     component.setState({});
 

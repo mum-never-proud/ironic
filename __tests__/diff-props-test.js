@@ -1,28 +1,28 @@
-import { toHaveAttribute } from '@testing-library/jest-dom/matchers'
+import { toHaveAttribute } from '@testing-library/jest-dom/matchers';
 import diffProps from '../src/diff/props';
 import mount from '../src/mount';
 import v from '../src/v';
 
 expect.extend({ toHaveAttribute });
 
-describe('diff props', function() {
+describe('diff props', () => {
   let rootElement;
 
-  beforeEach(function() {
+  beforeEach(() => {
     document.body.innerHTML = '<div id="root"></div>';
     rootElement = document.getElementById('root');
   });
 
-  afterEach(function() {
+  afterEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('should remove the prop', function () {
-    const props = { id: 'para' },
-      vNode = v('p', { props }),
-      p = mount(vNode, rootElement);
+  it('should remove the prop', () => {
+    const props = { id: 'para' };
+    const vNode = v('p', { props });
+    const p = mount(vNode, rootElement);
 
-    expect(p).toHaveAttribute('id');
+    expect(p).not.toHaveAttribute('id');
 
     const patch = diffProps(props, {});
 
@@ -31,10 +31,10 @@ describe('diff props', function() {
     expect(p).not.toHaveAttribute('id');
   });
 
-  it('should append the child', function () {
-    const props = {},
-      vNode = v('p', { props }),
-      p = mount(vNode, rootElement);
+  it('should append the child', () => {
+    const props = {};
+    const vNode = v('p', { props });
+    const p = mount(vNode, rootElement);
 
     expect(p).not.toHaveAttribute('id');
 

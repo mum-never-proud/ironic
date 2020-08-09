@@ -2,22 +2,22 @@ import diffChildren from '../src/diff/children';
 import mount from '../src/mount';
 import v from '../src/v';
 
-describe('diff children', function() {
+describe('diff children', () => {
   let rootElement;
 
-  beforeEach(function() {
+  beforeEach(() => {
     document.body.innerHTML = '<div id="root"></div>';
     rootElement = document.getElementById('root');
   });
 
-  afterEach(function() {
+  afterEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('should remove the child', function () {
-    const children = [v('p')],
-      vNode = v('p', { children }),
-      p = mount(vNode, rootElement)
+  it('should remove the child', () => {
+    const children = [v('p')];
+    const vNode = v('p', null, ...children);
+    const p = mount(vNode, rootElement);
 
     expect(rootElement.childNodes.length).toEqual(1);
 
@@ -28,9 +28,9 @@ describe('diff children', function() {
     expect(p.childNodes.length).toEqual(0);
   });
 
-  it('should append the child', function () {
-    const vNode = v('p', { children: [] }),
-      p = mount(vNode, rootElement)
+  it('should append the child', () => {
+    const vNode = v('p', { children: [] });
+    const p = mount(vNode, rootElement);
 
     expect(p.childNodes.length).toEqual(0);
 

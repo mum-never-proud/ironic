@@ -1,9 +1,9 @@
 import createElement from 'create/element';
 import mount from 'mount';
 
-export default function({ tag, props }, $parent) {
-  const Component = tag,
-    vComponent = new Component(props);
+export default function component({ tag, props }, $parent) {
+  const Component = tag;
+  const vComponent = new Component(props);
 
   vComponent._parentElement = $parent;
   vComponent._currentNode = vComponent.render();
