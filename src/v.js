@@ -4,6 +4,6 @@ export default function v(tag, props, ...children) {
   return createObject({
     tag,
     props: props || {},
-    children,
+    children: children.flat(),
   });
 }

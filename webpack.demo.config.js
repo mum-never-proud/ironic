@@ -2,14 +2,16 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './demo-assets/ironic-demo.jsx',
+  entry: './ironic-demo-app/app.jsx',
   output: {
-    filename: 'ironic-demo.min.js',
+    filename: 'app.min.js',
     path: path.resolve(__dirname, 'docs'),
   },
   resolve: {
     alias: {
       ironic: path.resolve(__dirname, 'dist/ironic.min.js'),
+      utils: path.resolve(__dirname, 'ironic-demo-app/utils'),
+      images: path.resolve(__dirname, 'ironic-demo-app/public/images'),
     },
     extensions: ['.js', '.jsx'],
   },

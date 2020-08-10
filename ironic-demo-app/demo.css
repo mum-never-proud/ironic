@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+html,
+body {
+  font-family: "Comfortaa";
+  background-color: #23272A;
+  color: rgb(108, 99, 255);
+}
+
+h1,
+h3,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+textarea.form-control,
+textarea.form-control:focus,
+textarea.form-control[readonly] {
+background-color: #222831;
+border: 1px solid #FB3;
+color: #FB3;
+outline: none;
+}
+
+.btn-primary:disabled {
+cursor: not-allowed;
+}
+
+a[route] {
+cursor: pointer;
+}
+
+footer {
+font-size: 12px;
+}
