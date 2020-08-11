@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-access-state-in-setstate */
@@ -48,25 +49,18 @@ class Disco extends $I.Component {
     const colors = this.state.colors.map((color, i) => <div className="color col-3" style={`background-color: rgb(${color.join(',')})`} onClick={this.updateSelectedColors.bind(this, i)} />);
 
     return (
-      <div>
-        <div className="row mt-5 justify-content-md-center">
-          <div className="col-12 col-md-6">
-            <div className="alert alert-info text-center" role="alert">
-              <p>Another Dumb component to just showcase the partial update of DOM tree, feel free to open dev tools to monitor the update</p>
-              <p>To demonstate Redux implementation, colors will stop changing once the above form is Submitted!</p>
-              <p>
-                Check out my basic&nbsp;
-                <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>
-                &nbsp;implementation!
-              </p>
-            </div>
-          </div>
+      <div className="row mt-5 justify-content-md-center">
+        <div className="col-12">
+          <p className="text-center">
+            <span className="lead">Disco Component</span> is subscribed to Central state using my own basic implementation of <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>.
+          </p>
+          <p>
+            You can click on the tile to stop the color change. Well this isn&apos;t much useful unless <span className="lead">Dev Tools</span> is open to see the minimum change (in this case props) in DOM.
+          </p>
         </div>
-        <div className="row mt-5 justify-content-md-center">
-          <div className="col-12 col-md-6">
-            <div className="row">
-              {colors}
-            </div>
+        <div className="col-12 col-md-6">
+          <div className="row">
+            {colors}
           </div>
         </div>
       </div>

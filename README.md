@@ -1,2 +1,5 @@
 # ironic
-virtual DOM based framework
+
+implementation of vDOM
+
+check out <a href="https://mum-never-proud.github.io/ironic/">ironic</a>!

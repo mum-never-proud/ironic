@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
 html,
 body {
   font-family: "Comfortaa";
-  background-color: #23272A;
-  color: rgb(108, 99, 255);
+  background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #2C3E50 74%);
+  color: #7E7BFF;
 }
 
 h1,
@@ -24,20 +25,25 @@ h3 {
 textarea.form-control,
 textarea.form-control:focus,
 textarea.form-control[readonly] {
-background-color: #222831;
-border: 1px solid #FB3;
-color: #FB3;
-outline: none;
+  background-color: #222831;
+  border: 1px solid #FB3;
+  color: #FB3;
+  outline: none;
 }
 
 .btn-primary:disabled {
-cursor: not-allowed;
+  cursor: not-allowed;
 }
 
-a[route] {
-cursor: pointer;
+a {
+  color: #FFF;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #FFF;
 }
 
 footer {
-font-size: 12px;
+  font-size: 12px;
 }

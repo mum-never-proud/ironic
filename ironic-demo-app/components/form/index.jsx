@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-access-state-in-setstate */
@@ -86,15 +87,30 @@ class Form extends $I.Component {
 
     return (
       <div>
-        <div className="row mt-5 justify-content-md-center">
-          <div class="col-12 col-md-6">
-            <div className="alert alert-info text-center" role="alert">
-              <p>A simple Form with validation to demonstrate state management in a Component, nothing is being recorded.</p>
-              <b>Still please don&apos;t submit any sensitive info!</b>
+        <div className="row mt-3 justify-content-md-center">
+          <div className="col-12">
+            <p className="text-center lead">
+              This WebApp (Dumb maybe) is made with <a href="https://github.com/mum-never-proud/ironic" target="_blank" rel="noreferrer">ironic</a> + <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>
+            </p>
+            <p>
+              vDOM concepts:
+              <ul className="mt-3">
+                <li>A Virtual DOM is a data structure that represents the real DOM but lacks the ability to impact UI directly</li>
+                <li>A new Virtual DOM tree is created for every change and diffed with the old one to make minimum changes to the real DOM</li>
+              </ul>
+            </p>
+            <p>
+              Below is a simple form with validation to demonstrate the <span className="lead">state management</span> inside a <b className="lead">Component</b>.
+            </p>
+            <p>
+              On scrolling down further you can see <span className="lead">Disco Component</span>, which will stop on successful submission of this form.
+            </p>
+            <div className="alert alert-warning text-center">
+              Feel free to play with the form. Remember do not submit any sensitive info!
             </div>
           </div>
         </div>
-        <div className="row mt-5 justify-content-md-center">
+        <div className="row mt-3 justify-content-md-center">
           <div className="col-12 col-md-6">
             <form>
               <div className="form-group">
