@@ -3,9 +3,8 @@
 html,
 body {
   font-family: "Comfortaa";
-  background-color: #000000;
-  background-image: linear-gradient(147deg, #000000 0%, #2C3E50 74%);
-  color: #7E7BFF;
+  background-color: #FFF;
+  color: #333;
 }
 
 h1,
@@ -22,6 +21,10 @@ h3 {
   font-size: 24px;
 }
 
+.sub-header {
+  color: #146FBE;
+}
+
 textarea.form-control,
 textarea.form-control:focus,
 textarea.form-control[readonly] {
@@ -36,12 +39,12 @@ textarea.form-control[readonly] {
 }
 
 a {
-  color: #FFF;
+  color: #146FBE;
   cursor: pointer;
 }
 
 a:hover {
-  color: #FFF;
+  color: #146FBE;
 }
 
 footer {

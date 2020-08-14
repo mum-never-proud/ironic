@@ -7,22 +7,25 @@
 // TODO: support for `htmlFor` in ironic
 
 import $I from 'ironic';
-import store from '../../store';
+import { incrementRetryCount, submitUserDetails } from '../../actions';
+import store from 'store';
+import './style.css';
+
+const { dispatch, getState, subscribe } = store;
 
 class Form extends $I.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
       checkout: false,
       isValidEmail: true,
       isValidPassword: true,
       isChecked: true,
-      isSubmitting: false,
-      isSubmitted: false,
+      ...getState().userReducer,
     };
+
+    subscribe(({ userReducer }) => this.setState({ ...this.state, ...userReducer }));
   }
 
   updateInput(e) {
@@ -54,19 +57,12 @@ class Form extends $I.Component {
       isValidEmail,
       isValidPassword,
       isChecked: checkout,
-      isSubmitting: isValidEmail && isValidPassword && checkout,
     });
 
-    if (this.state.isSubmitting) {
-      fetch('https://jsonplaceholder.typicode.com/users', {
-        method: 'POST',
-        body: JSON.stringify(this.state),
-      })
-        .then(() => {
-          this.updateState({ isSubmitted: true });
-          store.dispatch({ type: 'SUBMIT', payload: { isSubmitted: true } });
-        })
-        .finally(() => this.updateState({ isSubmitting: false }));
+    if (isValidEmail && isValidPassword && checkout) {
+      submitUserDetails(dispatch)({ email, password });
+    } else {
+      incrementRetryCount(dispatch);
     }
   }
 
@@ -87,32 +83,25 @@ class Form extends $I.Component {
 
     return (
       <div>
-        <div className="row mt-3 justify-content-md-center">
+        <div className="row justify-content-md-center">
           <div className="col-12">
-            <p className="text-center lead">
-              This WebApp (Dumb maybe) is made with <a href="https://github.com/mum-never-proud/ironic" target="_blank" rel="noreferrer">ironic</a> + <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>
+            <div className="lead sub-header">State Management</div>
+            <p className="mt-2">
+              This Signin form with validation demonstrates state management within the Component, it is also subscribed to the store will talk about it later, for now feel free to play with the form.
             </p>
-            <p>
-              vDOM concepts:
-              <ul className="mt-3">
-                <li>A Virtual DOM is a data structure that represents the real DOM but lacks the ability to impact UI directly</li>
-                <li>A new Virtual DOM tree is created for every change and diffed with the old one to make minimum changes to the real DOM</li>
-              </ul>
-            </p>
-            <p>
-              Below is a simple form with validation to demonstrate the <span className="lead">state management</span> inside a <b className="lead">Component</b>.
-            </p>
-            <p>
-              On scrolling down further you can see <span className="lead">Disco Component</span>, which will stop on successful submission of this form.
-            </p>
-            <div className="alert alert-warning text-center">
-              Feel free to play with the form. Remember do not submit any sensitive info!
-            </div>
           </div>
         </div>
         <div className="row mt-3 justify-content-md-center">
           <div className="col-12 col-md-6">
-            <form>
+            <form className="signin-form">
+              <div className="form-group">
+                <div className="alert alert-info text-center">
+                  Submitted details are sent to <a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noreferrer">jsonplaceholder.com</a>.
+                </div>
+                <div className="alert alert-warning text-center">
+                  Remember do not submit any sensitive info!
+                </div>
+              </div>
               <div className="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input

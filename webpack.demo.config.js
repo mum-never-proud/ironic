@@ -12,6 +12,8 @@ module.exports = {
       ironic: path.resolve(__dirname, 'dist/ironic.min.js'),
       utils: path.resolve(__dirname, 'ironic-demo-app/utils'),
       images: path.resolve(__dirname, 'ironic-demo-app/public/images'),
+      reducers: path.resolve(__dirname, 'ironic-demo-app/reducers'),
+      store: path.resolve(__dirname, 'ironic-demo-app/store'),
     },
     extensions: ['.js', '.jsx'],
   },

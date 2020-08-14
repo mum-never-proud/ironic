@@ -7,17 +7,19 @@
 
 import $I from 'ironic';
 import generateRGB from 'utils/generate-rgb';
-import store from '../../store';
+import store from 'store';
 import './style.css';
+
+const { getState, subscribe } = store;
 
 class Disco extends $I.Component {
   constructor(props) {
     super(props);
 
-    this.state = { colors: [], selectedColors: [], isSubmitted: false };
+    this.state = { colors: [], selectedColors: [], ...getState().userReducer };
 
+    subscribe(({ userReducer }) => this.setState({ ...this.state, ...userReducer }));
     // TODO: remove this once lifecycle methods are implemented
-    store.subscribe((state) => this.setState({ ...this.state, ...state }));
     window.setTimeout(() => this.updateRGBGrid());
   }
 
@@ -51,17 +53,13 @@ class Disco extends $I.Component {
     return (
       <div className="row mt-5 justify-content-md-center">
         <div className="col-12">
-          <p className="text-center">
-            <span className="lead">Disco Component</span> is subscribed to Central state using my own basic implementation of <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>.
-          </p>
-          <p>
-            You can click on the tile to stop the color change. Well this isn&apos;t much useful unless <span className="lead">Dev Tools</span> is open to see the minimum change (in this case props) in DOM.
-          </p>
-        </div>
-        <div className="col-12 col-md-6">
-          <div className="row">
-            {colors}
+          <p>Disco Component is also subscribed to the store. You can click on the tile to pause the color change again to demonstrate internal state management. </p>
+          <div className="alert alert-info text-center">
+            Visit the link to identify areas being painted in devtools for <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference#paint-flashing" target="_blank" rel="noreferrer">Chrome/Edge</a> or <a href="https://developer.mozilla.org/en-US/docs/Tools/Paint_Flashing_Tool" target="_blank" rel="noreferrer">Firefox</a>
           </div>
+        </div>
+        <div className="col-12 col-md-6 disco-lights-container">
+          {colors}
         </div>
       </div>
     );

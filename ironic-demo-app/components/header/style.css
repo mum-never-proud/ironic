@@ -1,0 +1,13 @@
+.header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 15px 0;
+  background-color: #146FBE;
+  color: #FFF;
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+}
