@@ -2,8 +2,8 @@
 
 html,
 body {
-  font-family: "Comfortaa";
-  background-color: #FFF;
+  font-family: "Comfortaa", Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  background-color: #fff;
   color: #333;
 }
 
@@ -22,15 +22,15 @@ h3 {
 }
 
 .sub-header {
-  color: #146FBE;
+  color: #146fbe;
 }
 
 textarea.form-control,
 textarea.form-control:focus,
 textarea.form-control[readonly] {
   background-color: #222831;
-  border: 1px solid #FB3;
-  color: #FB3;
+  border: 1px solid #fb3;
+  color: #fb3;
   outline: none;
 }
 
@@ -39,12 +39,12 @@ textarea.form-control[readonly] {
 }
 
 a {
-  color: #146FBE;
+  color: #146fbe;
   cursor: pointer;
 }
 
 a:hover {
-  color: #146FBE;
+  color: #146fbe;
 }
 
 footer {

@@ -7,8 +7,8 @@
 // TODO: support for `htmlFor` in ironic
 
 import $I from 'ironic';
-import { incrementRetryCount, submitUserDetails } from '../../actions';
 import store from 'store';
+import { incrementRetryCount, submitUserDetails } from 'actions';
 import './style.css';
 
 const { dispatch, getState, subscribe } = store;
@@ -25,7 +25,9 @@ class Form extends $I.Component {
       ...getState().userReducer,
     };
 
-    subscribe(({ userReducer }) => this.setState({ ...this.state, ...userReducer }));
+    subscribe(({ userReducer: { isSubmitting, isSubmitted } }) => {
+      this.setState({ ...this.state, isSubmitting, isSubmitted });
+    });
   }
 
   updateInput(e) {
