@@ -33,7 +33,11 @@ class Form extends $I.Component {
   updateInput(e) {
     const attrName = e.target.getAttribute('name');
 
-    this.updateState({ [attrName]: attrName === 'checkout' ? e.target.checked : e.target.value });
+    if (attrName === 'checkout') {
+      this.updateState({ [attrName]: e.target.checked, isChecked: e.target.checked });
+    } else {
+      this.updateState({ [attrName]: e.target.value });
+    }
   }
 
   clearError(field) {
@@ -155,7 +159,6 @@ class Form extends $I.Component {
                   id="exampleCheck1"
                   disabled={isSubmitted}
                   onChange={this.updateInput.bind(this)}
-                  onFocusIn={this.clearError.bind(this, 'isChecked')}
                 />
                 <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 <small className={`form-text ${isChecked ? '' : 'text-danger'}`}>

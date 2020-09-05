@@ -8,7 +8,7 @@ import Header from './components/header';
 import Intro from './components/intro';
 import UserDetails from './components/user-details';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
+import 'unified-demo-theme/dist/styles/theme.min.css';
 
 class Main extends $I.Component {
   render() {

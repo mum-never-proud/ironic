@@ -10,7 +10,7 @@ class Intro extends $I.Component {
       <div className="row mt-3 justify-content-md-center">
         <div className="col-12">
           <p className="text-center lead">
-            made with <a href="https://github.com/mum-never-proud/ironic" target="_blank" rel="noreferrer">ironic</a> + <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>
+            this WebApp is made with <a href="https://github.com/mum-never-proud/ironic" target="_blank" rel="noreferrer">ironic</a> + <a href="https://github.com/mum-never-proud/redux" target="_blank" rel="noreferrer">redux</a>
           </p>
           <div>
             <div className="lead sub-header">vDOM concepts</div>

@@ -1,7 +1,7 @@
 /** @jsx $I.v */
 
 import $I from 'ironic';
-import CookieLove from 'images/cookie-love.svg';
+import IcecreamLove from 'unified-demo-theme/dist/images/icecream-love.svg';
 
 class Footer extends $I.Component {
   render() {
@@ -17,7 +17,7 @@ class Footer extends $I.Component {
             </p>
             <p className="text-center">
               made with much
-              <img src={CookieLove} alt="Cookie Love" width="50" height="50" />
+              <img src={IcecreamLove} alt="Cookie Love" width="50" height="50" />
             </p>
           </footer>
         </div>
