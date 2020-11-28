@@ -61,7 +61,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "bootstrap": "4.5.2",
+    "bootstrap": "4.5.3",
     "path": "0.12.7",
     "redux": "https://github.com/mum-never-proud/redux.git",
     "uniqid": "5.2.0",
